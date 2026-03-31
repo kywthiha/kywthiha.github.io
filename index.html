@@ -3,158 +3,766 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kyaw Thiha | Senior Fullstack Developer</title>
-  <meta name="description" content="Kyaw Thiha - Senior Fullstack Developer & AI Agent Builder specializing in Next.js, TypeScript, Laravel, NestJS and AI Agents."/>
+  <title>Kyaw Thiha | Full Stack Software Engineer</title>
+  <meta name="description" content="Kyaw Thiha is a Full Stack Software Engineer managing the full software development lifecycle and building scalable applications."/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg: #0a0a0a;
-      --text: #e0e0e0;
-      --accent: #00ff9d;
+      --bg-color: #030303;
+      --card-bg: rgba(255, 255, 255, 0.02);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-main: #ffffff;
+      --text-muted: #a1a1aa;
+      --accent-1: #00f2fe;
+      --accent-2: #4facfe;
+      --accent-glow: rgba(0, 242, 254, 0.15);
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
     }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* Subtle Animated Mesh Background */
+    .mesh-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: -2;
+      background: 
+        radial-gradient(circle at 15% 50%, rgba(0, 242, 254, 0.04), transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(79, 172, 254, 0.04), transparent 50%);
+      pointer-events: none;
+    }
+
+    /* Custom Cursor Follower */
+    #cursor-glow {
+      position: fixed;
+      top: 0; left: 0;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.06) 0%, transparent 60%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: -1;
+      transition: width 0.3s, height 0.3s;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+    }
+
+    /* Glow Badge */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      border-radius: 50px;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      color: var(--accent-1);
+      margin-bottom: 30px;
+      animation: pulse-border 2s infinite alternate;
+    }
+    .status-dot {
+      width: 8px; height: 8px;
+      background: var(--accent-1);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-1);
+    }
+    @keyframes pulse-border {
+      0% { border-color: rgba(0, 242, 254, 0.2); box-shadow: 0 0 0 rgba(0,242,254,0); }
+      100% { border-color: rgba(0, 242, 254, 0.5); box-shadow: 0 0 15px rgba(0,242,254,0.2); }
+    }
+
+    /* Hero Section */
+    header {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 20px 60px;
+      position: relative;
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 800;
+      margin: 0 0 10px 0;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      font-family: var(--font-heading);
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 400;
+      margin: 0 0 30px 0;
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      max-width: 700px;
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .hero-desc strong {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* Buttons */
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 36px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1rem;
+      color: #000;
+      background: var(--text-main);
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255,255,255,0.15);
+    }
+    .btn-glow {
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+      color: #000;
+    }
+    .btn-glow:hover {
+      box-shadow: 0 10px 30px rgba(0, 242, 254, 0.3);
+    }
+
+    /* Section Styling */
+    section {
+      padding: 120px 0;
+      position: relative;
+    }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      margin-bottom: 60px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .section-title span {
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Grid & Cards Spotlight Effect */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+      text-decoration: none;
+      z-index: 1;
+    }
+    
+    /* Reveal gradient on hover using JS coordinate */
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(0, 242, 254, 0.08), transparent 40%);
+      opacity: 0;
+      transition: opacity 0.5s;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .card:hover::before { opacity: 1; }
+    .card:hover { border-color: rgba(0, 242, 254, 0.3); transform: translateY(-4px); }
+
+    .card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      margin: 0 0 12px 0;
+      color: var(--text-main);
+    }
+    .card p {
+      color: var(--text-muted);
+      flex-grow: 1;
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+    }
+    
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .tech-tag {
+      font-size: 0.75rem;
+      padding: 6px 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    
+    .card-footer {
+      margin-top: auto;
+    }
+    
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: gap 0.3s;
+      gap: 6px;
+    }
+    .card:hover .card-link { gap: 10px; color: var(--accent-1); }
+
+    /* Timeline Professional Journey */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .timeline-item {
+      display: flex;
+      gap: 32px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 32px;
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .timeline-item:hover {
+      transform: translateX(8px);
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .timeline-year {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      color: var(--text-muted);
+      min-width: 140px;
+      flex-shrink: 0;
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+    .timeline-item:hover .timeline-year { color: var(--accent-1); }
+    
+    .timeline-content h4 {
+      margin: 0 0 4px 0;
+      font-size: 1.4rem;
+      color: var(--text-main);
+      font-family: var(--font-heading);
+    }
+    .timeline-content > p {
+      margin: 0 0 16px 0;
+      color: var(--accent-2);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+    .job-details {
+      margin: 0 0 0 -5px;
+      padding-left: 20px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
       line-height: 1.6;
     }
-    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-    header {
-      text-align: center;
-      padding: 100px 20px 80px;
-      background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+    .job-details li { margin-bottom: 8px; }
+
+    /* Skills Premium Cloud */
+    .skills-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
     }
-    h1 { font-size: 3.5rem; margin: 0; }
-    h2 { color: var(--accent); }
-    .tagline { font-size: 1.4rem; margin: 20px 0; opacity: 0.9; }
-    section { padding: 80px 0; border-top: 1px solid #222; }
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    .project-card {
-      background: #111;
+    .skill-badge {
+      padding: 12px 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
       border-radius: 12px;
-      padding: 25px;
-      transition: transform 0.3s, box-shadow 0.3s;
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      color: var(--text-main);
+      transition: all 0.3s ease;
+      cursor: default;
     }
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 255, 157, 0.15);
+    .skill-badge.highlight {
+      border-color: rgba(0, 242, 254, 0.4);
+      color: var(--accent-1);
+      background: rgba(0, 242, 254, 0.05);
     }
-    .project-card h3 { margin-top: 0; color: var(--accent); }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: #000;
-      padding: 12px 28px;
-      border-radius: 50px;
-      font-weight: bold;
-      margin-top: 20px;
+    .skill-badge:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
     }
-    footer { text-align: center; padding: 60px 20px; opacity: 0.7; font-size: 0.9rem; }
+    .skill-badge.highlight:hover {
+      background: rgba(0, 242, 254, 0.15);
+      border-color: var(--accent-1);
+      box-shadow: 0 10px 20px rgba(0,242,254,0.15);
+    }
+
+    footer {
+      padding: 60px 20px;
+      text-align: center;
+      border-top: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    footer a { color: var(--text-main); text-decoration: none; margin: 0 10px; transition: color 0.3s; }
+    footer a:hover { color: var(--accent-1); }
+
+    /* Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .timeline-item { flex-direction: column; gap: 12px; padding: 24px; }
+      .timeline-year { margin-bottom: 4px; }
+      .section-title { font-size: 2.2rem; }
+    }
   </style>
 </head>
 <body>
 
+  <div class="mesh-bg"></div>
+  <div id="cursor-glow"></div>
+
   <header>
-    <div class="container">
-      <h1>Kyaw Thiha</h1>
-      <p class="tagline">Senior Fullstack Developer &amp; AI Agent Builder</p>
-      <p style="max-width: 700px; margin: 30px auto; font-size: 1.1rem;">
-        I build intelligent AI agents and scalable web applications using Next.js, TypeScript, Laravel, NestJS, and modern AI tools.
+    <div class="container reveal">
+      <div class="status-badge">
+        <div class="status-dot"></div>
+        Available for New Opportunities
+      </div>
+      <h1 id="hero-title">Kyaw Thiha</h1>
+      <p class="tagline">Full Stack Software Engineer</p>
+      <p class="hero-desc">
+        I am a Full Stack Software Engineer experienced in managing the complete software development lifecycle. I specialize in backend architecture and cloud deployments using Docker, Nginx, and PM2 on AWS. My current core stack features NestJS, Laravel, React.js, Python, and TypeScript/JavaScript (Node.js), supported by a deep academic foundation in Java. I also have hands-on experience building modern AI-powered applications.
       </p>
-      <a href="mailto:kyawthiha.dev@gmail.com" class="btn">Get In Touch</a>
-      <br><br>
-      <a href="https://kyawthiha.vercel.app" style="color:#888; font-size:0.95rem;">View Detailed Portfolio →</a>
+      <div class="hero-buttons">
+        <a href="https://www.linkedin.com/in/kyawthihadev/" target="_blank" class="btn btn-glow">Connect on LinkedIn</a>
+        <a href="mailto:kyawthiha.dev@gmail.com" class="btn">Get In Touch</a>
+      </div>
     </div>
   </header>
 
-  <section id="projects">
-    <div class="container">
-      <h2>Recent Hackathon & Side Projects</h2>
+  <main>
+    <!-- Hackathons Section -->
+    <section id="hackathons">
+      <div class="container">
+        <h2 class="section-title reveal">AI & <span>Innovation</span></h2>
+        <div class="grid">
+          
+          <a href="https://github.com/kywthiha/support-pilot" target="_blank" class="card reveal">
+            <h3>SupportPilot</h3>
+            <p>A real-time AI support agent that processes voice and screen input to guide users through web applications.</p>
+            <div class="card-footer">
+              <div class="tech-stack">
+                <span class="tech-tag">Gemini 2.5 Flash Live</span>
+                <span class="tech-tag">Google ADK</span>
+                <span class="tech-tag">Vertex AI RAG</span>
+                <span class="tech-tag">FastAPI</span>
+              </div>
+              <div class="card-link">View Source <span>&rarr;</span></div>
+            </div>
+          </a>
+          
+          <a href="https://github.com/kywthiha/nextjs-agent-cli" target="_blank" class="card reveal" style="transition-delay: 100ms;">
+            <h3>nextjs-agent-cli</h3>
+            <p>An AI-powered CLI tool that builds full-stack Next.js applications directly from text descriptions. Developed for the Gemini Hackathon.</p>
+            <div class="card-footer">
+              <div class="tech-stack">
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Prisma</span>
+                <span class="tech-tag">AI Multi-agent</span>
+              </div>
+              <div class="card-link">View Source <span>&rarr;</span></div>
+            </div>
+          </a>
 
-      <div class="project-grid">
-        <div class="project-card">
-          <h3>SupportPilot</h3>
-          <p>Real-time multimodal AI customer support agent that can see your screen, hear your voice, and guide users step-by-step through complex SaaS platforms.</p>
-          <p><strong>Tech:</strong> Gemini 2.5 Flash Live, Google ADK, Vertex AI RAG, FastAPI, React, Docker</p>
-          <a href="https://github.com/kywthiha/support-pilot" target="_blank">→ View on GitHub</a>
-        </div>
+          <a href="https://gitlab.com/gitlab-ai-hackathon/participants/35496680" target="_blank" class="card reveal" style="transition-delay: 200ms;">
+            <h3>DuoMRReview</h3>
+            <p>An AI code review assistant built during the GitLab Hackathon to automate code checks and improve team collaboration.</p>
+            <div class="card-footer">
+              <div class="tech-stack">
+                <span class="tech-tag">AI Code Review</span>
+                <span class="tech-tag">GitLab API</span>
+              </div>
+              <div class="card-link">View on GitLab <span>&rarr;</span></div>
+            </div>
+          </a>
 
-        <div class="project-card">
-          <h3>nextjs-agent-cli</h3>
-          <p>AI-powered CLI that generates production-ready fullstack Next.js applications from natural language descriptions. Built for Gemini 3 Hackathon 2026.</p>
-          <p><strong>Tech:</strong> Next.js, TypeScript, Prisma, AI Agent, Self-verification</p>
-          <a href="https://github.com/kywthiha/nextjs-agent-cli" target="_blank">→ View on GitHub</a>
-        </div>
-
-        <div class="project-card">
-          <h3>DuoMRReview</h3>
-          <p>AI-powered code review assistant built during the GitLab AI Hackathon. Improving modern code collaboration workflows.</p>
-          <a href="https://gitlab.com/gitlab-ai-hackathon/participants/35496680" target="_blank">→ View on GitLab</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="featured" style="background:#111;">
-    <div class="container">
-      <h2>Featured Fullstack Projects</h2>
-      <div class="project-grid">
-        <div class="project-card">
-          <h3>CoinFrontend</h3>
-          <p>Modern cryptocurrency discovery platform with search, filters, watchlist, and responsive design. Built with Next.js + TypeScript.</p>
-          <a href="https://github.com/kywthiha/CoinFrontend" target="_blank">→ GitHub</a>
-        </div>
-        <div class="project-card">
-          <h3>CoinBackend</h3>
-          <p>Laravel backend with admin dashboard, Sanctum auth, and REST API for crypto project management.</p>
-          <a href="https://github.com/kywthiha/CoinBackend" target="_blank">→ GitHub</a>
-        </div>
-        <div class="project-card">
-          <h3>Python Product Search AI</h3>
-          <p>Visual search engine using deep learning (ResNet50, VGG16) + Elasticsearch for image similarity.</p>
-          <a href="https://github.com/kywthiha/PythonProductSearchAI" target="_blank">→ GitHub</a>
+    <!-- Engineering Projects -->
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title reveal">Featured <span>Projects</span></h2>
+        <div class="grid">
+          
+          <div class="card reveal">
+            <h3>AWS Lambda Presigned URL</h3>
+            <p>A serverless Ruby function on AWS Lambda that generates secure, expiring URLs for Amazon S3 file access.</p>
+            <div class="card-footer">
+              <div class="tech-stack">
+                <span class="tech-tag">Ruby</span>
+                <span class="tech-tag">AWS Lambda</span>
+                <span class="tech-tag">Amazon S3</span>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://github.com/kywthiha/CoinFrontend" target="_blank" class="card reveal" style="transition-delay: 100ms;">
+            <h3>CoinFrontend</h3>
+            <p>A responsive website for discovering cryptocurrencies, featuring search tools, data filters, and personal watchlists.</p>
+            <div class="card-footer">
+              <div class="tech-stack">
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">React</span>
+              </div>
+              <div class="card-link">Explore Code <span>&rarr;</span></div>
+            </div>
+          </a>
+          
+          <a href="https://github.com/kywthiha/CoinBackend" target="_blank" class="card reveal" style="transition-delay: 200ms;">
+            <h3>CoinBackend</h3>
+            <p>A secure Laravel backend delivering user authentication, an admin dashboard, and scalable REST APIs.</p>
+            <div class="card-footer">
+              <div class="tech-stack">
+                <span class="tech-tag">Laravel</span>
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">MySQL</span>
+              </div>
+              <div class="card-link">Explore Code <span>&rarr;</span></div>
+            </div>
+          </a>
+
+          <div class="card reveal">
+            <h3>Data Visualization</h3>
+            <p>Interactive web applications built using D3.js to cleanly represent complex datasets and charts.</p>
+            <div class="card-footer">
+              <div class="tech-stack">
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">D3.js</span>
+                <span class="tech-tag">HTML/CSS</span>
+              </div>
+              <div style="display:flex; gap: 16px; margin-top: 12px;">
+                <a href="https://kywthiha.github.io/Data-Visualization-Projects/index.html" target="_blank" class="card-link">Live Demo <span>&rarr;</span></a>
+                <a href="https://github.com/kywthiha/Data-Visualization-Projects/" target="_blank" class="card-link">GitHub <span>&rarr;</span></a>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://github.com/kywthiha/PythonProductSearchAI" target="_blank" class="card reveal" style="transition-delay: 100ms;">
+            <h3>Product Search Engine</h3>
+            <p>A product search engine combining deep learning visual models (ResNet/VGG) with Elasticsearch for sub-second retrieval.</p>
+            <div class="card-footer">
+              <div class="tech-stack">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">ResNet50 / VGG16</span>
+                <span class="tech-tag">Elasticsearch</span>
+              </div>
+              <div class="card-link">Explore Code <span>&rarr;</span></div>
+            </div>
+          </a>
+
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <div class="container">
-      <h2>Experience</h2>
-      <ul style="list-style:none; padding:0;">
-        <li><strong>2023 – 2024</strong> — Full Stack Web Developer @ BizAid</li>
-        <li><strong>2022</strong> — Senior Web Developer @ GIC Myanmar</li>
-        <li><strong>2020 – 2022</strong> — Web Developer @ MM-Digital-Solutions</li>
-      </ul>
-    </div>
-  </section>
+    <!-- Professional Experience -->
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title reveal">Professional <span>Experience</span></h2>
+        <div class="timeline">
+          
+          <div class="timeline-item reveal">
+            <div class="timeline-year">May 2024 - Present</div>
+            <div class="timeline-content">
+              <h4>Laravel Developer</h4>
+              <p>AutomatedPros</p>
+              <ul class="job-details">
+                <li>Engineered backend systems and secure REST APIs using Laravel.</li>
+                <li>Built a SaaS platform to automate social media scheduling across multiple networks.</li>
+                <li>Developed a custom form builder application utilizing Laravel and Vue.js.</li>
+                <li>Created a restaurant management system to digitize daily business operations.</li>
+                <li>Optimized complex database queries to improve application speed and handle high user traffic.</li>
+              </ul>
+            </div>
+          </div>
 
-  <section style="background:#111;">
-    <div class="container">
-      <h2>Skills</h2>
-      <p><strong>Frontend:</strong> Next.js, React, TypeScript, Tailwind CSS, Redux, React Query</p>
-      <p><strong>Backend & AI:</strong> Laravel, NestJS, FastAPI, Gemini API, Vertex AI, RAG, WebSockets</p>
-      <p><strong>Database & DevOps:</strong> PostgreSQL, MySQL, Redis, Docker, AWS, CI/CD</p>
-    </div>
-  </section>
+          <div class="timeline-item reveal">
+            <div class="timeline-year">Jan 2023 - Apr 2024</div>
+            <div class="timeline-content">
+              <h4>Full Stack Web Developer</h4>
+              <p>BizAid</p>
+              <ul class="job-details">
+                <li>Developed a Distribution Management application using NestJS, React, and MySQL.</li>
+                <li>Built a Merchandising system that provides core enterprise management features.</li>
+                <li>Integrated automated data synchronization with external DynamicNav ERP software.</li>
+                <li>Managed scalable server deployments using Docker, PM2, and Nginx.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-year">Mar 2022 - Dec 2022</div>
+            <div class="timeline-content">
+              <h4>Senior Web Developer</h4>
+              <p>GIC Myanmar Co., Ltd</p>
+              <ul class="job-details">
+                <li>Developed an Advertising Management platform using Ruby on Rails and React.</li>
+                <li>Built a Thermal Image Processing system natively integrated with AWS services.</li>
+                <li>Implemented secure large-file upload features utilizing AWS S3 cloud storage.</li>
+                <li>Added real-time messaging updates using WebSockets and AWS SNS.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-year">Jul 2020 - Jan 2022</div>
+            <div class="timeline-content">
+              <h4>Web Developer</h4>
+              <p>MM-Digital-Solutions (Digizay)</p>
+              <ul class="job-details">
+                <li>Developed business web and mobile applications using Laravel and Vue.js.</li>
+                <li>Built e-commerce platforms featuring fast product search powered by Elasticsearch.</li>
+                <li>Created and deployed automated chatbots for various messaging applications.</li>
+                <li>Designed customized learning management systems and online healthcare portals.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Cloud -->
+    <section id="skills">
+      <div class="container" style="max-width: 900px;">
+        <h2 class="section-title reveal" style="text-align: left;">Technical <span>Skills</span></h2>
+        <div class="skills-wrapper reveal">
+          <div class="skill-badge highlight">NestJS</div>
+          <div class="skill-badge highlight">Laravel</div>
+          <div class="skill-badge highlight">React.js</div>
+          <div class="skill-badge highlight">Python</div>
+          <div class="skill-badge highlight">TypeScript</div>
+          <div class="skill-badge highlight">JavaScript / ECMAScript</div>
+          <div class="skill-badge highlight">Node.js</div>
+          
+          <div class="skill-badge highlight">Next.js</div>
+          <div class="skill-badge highlight">Java (J2SE/J2EE)</div>
+          <div class="skill-badge highlight">PostgreSQL</div>
+          <div class="skill-badge highlight">MySQL</div>
+          <div class="skill-badge highlight">Docker / Containers</div>
+          <div class="skill-badge highlight">AWS EC2 / VPS</div>
+          <div class="skill-badge highlight">Nginx & PM2</div>
+          <div class="skill-badge highlight">AI Agents & MCP</div>
+          
+          <div class="skill-badge">Vue.js</div>
+          <div class="skill-badge">Ruby on Rails</div>
+          <div class="skill-badge">Redis</div>
+          <div class="skill-badge">PHP</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academic Background -->
+    <section id="education" style="padding-top: 40px;">
+      <div class="container">
+        <h2 class="section-title reveal">Academic <span>Background</span></h2>
+        <div class="timeline">
+          
+          <div class="timeline-item reveal">
+            <div class="timeline-year" style="min-width: 160px;">University Studies<br><span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">5-Year Program</span></div>
+            <div class="timeline-content">
+              <h4>Computer Science Degree Curriculum</h4>
+              <ul class="job-details">
+                <li>Completed comprehensive academic coursework up to the final year (formal graduation halted due to national political circumstances).</li>
+                <li><strong>Core Programming:</strong> Deep foundation in Java (J2SE/J2EE), Data Structures with Java, Object-Oriented System Development, and JavaScript programming since early coursework.</li>
+                <li><strong>Software & Systems:</strong> Software Engineering, Database Management Systems (DBMS), Operating Systems, Distributed Systems.</li>
+                <li><strong>Advanced Computing:</strong> Artificial Intelligence, Natural Language Processing (NLP), Data Mining, Design & Analysis of Algorithms.</li>
+                <li><strong>Networking & Security:</strong> Computer Networking, Information Assurance & Security, Web Engineering.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-year">Certified</div>
+            <div class="timeline-content">
+              <h4>OTHM Level 5 Diploma in Information Technology</h4>
+              <p>Fully Completed Credential</p>
+              <ul class="job-details">
+                <li>Officially passed and completed the UK-based OTHM Level 5 Diploma in Information Technology.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications">
+      <div class="container">
+        <h2 class="section-title reveal">Verified <span>Certifications</span></h2>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+           <a href="https://www.freecodecamp.org/certification/fccff9564b7-fd04-4c29-a1c5-55ac2848dca4/back-end-development-and-apis" target="_blank" class="card reveal">
+             <h3>Back End Development & APIs</h3>
+             <p style="margin-bottom: 0;">freeCodeCamp &bull; Verified</p>
+           </a>
+           
+           <a href="https://www.freecodecamp.org/certification/fccff9564b7-fd04-4c29-a1c5-55ac2848dca4/javascript-algorithms-and-data-structures" target="_blank" class="card reveal" style="transition-delay: 100ms;">
+             <h3>JavaScript Algorithms & Data Structures</h3>
+             <p style="margin-bottom: 0;">freeCodeCamp &bull; Verified</p>
+           </a>
+
+           <a href="https://www.freecodecamp.org/certification/fccff9564b7-fd04-4c29-a1c5-55ac2848dca4/data-visualization" target="_blank" class="card reveal" style="transition-delay: 200ms;">
+             <h3>Data Visualization</h3>
+             <p style="margin-bottom: 0;">freeCodeCamp &bull; Verified</p>
+           </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <footer>
     <div class="container">
-      <p>Kyaw Thiha © 2026 • Built with ❤️ using pure HTML + CSS</p>
-      <p>
-        <a href="https://github.com/kywthiha" target="_blank">GitHub</a> • 
-        <a href="https://kyawthiha.vercel.app" target="_blank">Detailed Portfolio</a> • 
-        <a href="mailto:kyawthiha.dev@gmail.com">kyawthiha.dev@gmail.com</a>
+      <p style="margin-bottom: 24px;">
+        <a href="https://github.com/kywthiha" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/kyawthihadev/" target="_blank">LinkedIn</a>
+        <a href="mailto:kyawthiha.dev@gmail.com">Contact</a>
       </p>
+      <p>&copy; 2026 Kyaw Thiha. Hand-crafted with absolute precision and modern web aesthetics.</p>
     </div>
   </footer>
 
+  <script>
+    /* Smooth Scroll Reveals */
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+    
+    // Trigger hero reveal immediately
+    setTimeout(() => {
+      document.querySelectorAll('header .reveal').forEach(el => el.classList.add('active'));
+    }, 100);
+
+    /* Dynamic Card Spotlight Effect */
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+
+    /* Custom Cursor Follower */
+    const cursorGlow = document.getElementById('cursor-glow');
+    document.addEventListener('mousemove', (e) => {
+      cursorGlow.style.left = `${e.clientX}px`;
+      cursorGlow.style.top = `${e.clientY}px`;
+    });
+    
+    // Increase glow on clickable elements
+    const clickables = document.querySelectorAll('a, .btn, .card');
+    clickables.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursorGlow.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        cursorGlow.style.background = 'radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, transparent 60%)';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursorGlow.style.transform = 'translate(-50%, -50%) scale(1)';
+        cursorGlow.style.background = 'radial-gradient(circle, rgba(0, 242, 254, 0.06) 0%, transparent 60%)';
+      });
+    });
+  </script>
 </body>
 </html>
